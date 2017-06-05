@@ -21,7 +21,7 @@
      }
    }
 
-   start = id:ID right:ASSIGN left:sum         {return left + right + id;}               
+   start = id:ID right:ASSIGN left:sum         {return left + id + right;}               
            / sum
    sum     = left:product right:($[+-] product)* { return reduce(left, right); }
    product = left:value   right:($[*/] value)*   { return reduce(left, right); }
