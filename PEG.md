@@ -10,9 +10,6 @@
 
    ````
    {  
-
-     const util = require('util');
-
      function reduce(left, right) {
        var sum = left;
        right.forEach((r,_) => {
@@ -22,16 +19,9 @@
      
        return sum;
      }
-     
-     function prueba(left, right){
-       var sum = left;
-       console.log(right);
-       sum += ` $${right[0]} ${right[1]}`;
-       return sum;
-     }
    }
 
-   start = right:(ID ASSIGN) left:sum         {return prueba(left, right);}            
+   start = id:ID right:ASSIGN left:sum         {return left + right + id;}               
            / sum
    sum     = left:product right:($[+-] product)* { return reduce(left, right); }
    product = left:value   right:($[*/] value)*   { return reduce(left, right); }
